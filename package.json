@@ -1,0 +1,22 @@
+{
+  "name": "cypress-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Roshan-ops/Cypress-Automation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Roshan-ops/Cypress-Automation/issues"
+  },
+  "homepage": "https://github.com/Roshan-ops/Cypress-Automation#readme",
+  "devDependencies": {
+    "cypress": "^13.13.2"
+  }
+}
