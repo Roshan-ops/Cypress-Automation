@@ -8,8 +8,11 @@ describe('Kiibank Automation', () => {
         cy.fixture('staffs.json').then((staff) => {
             registerObj.openURL();
             registerObj.clickbutton();           
-            console.log(staff);            
             registerObj.enterfirstname(staff.firstName);
+            registerObj.entermiddlename(staff.middleName);
+            registerObj.enterlastname(staff.lastName);
+            registerObj.clickdob();
+
         });
     });
 });

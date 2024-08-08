@@ -5,7 +5,8 @@ export class registerPage{
     signup:'Sign Up',
     firstname:'#signupStaffDetailForm-firstName',
     Middlename:'#signupStaffDetailForm-middleName',
-    Lastname:'#signupStaffDetailForm-lastName'
+    Lastname:'#signupStaffDetailForm-lastName',
+    Dob:'#signupStaffDetailForm-dateOfBirth'
     }
     openURL(){
         cy.visit(Cypress.env('URL'))
@@ -24,4 +25,8 @@ entermiddlename(MName){
 enterlastname(LName){
     cy.get(this.weblocators.Lastname).type(LName)
 }
+clickdob(){
+    cy.get(this.weblocators.Dob).click()
+}
+
 }
