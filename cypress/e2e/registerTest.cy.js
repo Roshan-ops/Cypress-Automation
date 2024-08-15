@@ -12,10 +12,10 @@ describe('Kiibank Automation', () => {
             registerObj.entermiddlename(staff.middleName);
             registerObj.enterlastname(staff.lastName);
             registerObj.clickdob();
-            // registerObj.clickyear();
             registerObj.selectRandomYear();
             registerObj.selectRandomMonth();
             registerObj.selectRandomDay();
+            registerObj.enterEmail(staff.Email);
 
         });
     });

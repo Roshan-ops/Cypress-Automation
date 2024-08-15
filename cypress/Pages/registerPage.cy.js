@@ -7,11 +7,11 @@ export class registerPage{
     Middlename:'#signupStaffDetailForm-middleName',
     Lastname:'#signupStaffDetailForm-lastName',
     Dob:'#signupStaffDetailForm-dateOfBirth',
-    year:'.mdc-button__label > span',
     chooseMonthYearBtn: 'button[aria-label="Choose month and year"]',
     calendarContent: '.mat-calendar-content',
     calendarBody: '.mat-calendar-body',
-    overlayBackdrop: '.cdk-overlay-backdrop'
+    overlayBackdrop: '.cdk-overlay-backdrop',
+    email:'label[for="signupStaffDetailForm-email"]'
   }
     openURL(){
         cy.visit(Cypress.env('URL'))
@@ -33,9 +33,6 @@ enterlastname(LName){
 clickdob(){
     cy.get(this.weblocators.Dob).click({ force: true });
 }
-// clickyear(){
-//     cy.get(this.weblocators.year).click()
-// }
 
 selectRandomYear() {
     cy.get(this.weblocators.chooseMonthYearBtn).click();
@@ -64,4 +61,7 @@ selectRandomDay() {
         });
     });
 } 
+selectemail(Email){
+    cy.get(this.weblocators.email).type(Email)
+}
 }
