@@ -12,7 +12,7 @@ export class registerPage{
     calendarContent: '.mat-calendar-content',
     calendarBody: '.mat-calendar-body',
     overlayBackdrop: '.cdk-overlay-backdrop'
-    }
+  }
     openURL(){
         cy.visit(Cypress.env('URL'))
     }
@@ -31,11 +31,11 @@ enterlastname(LName){
     cy.get(this.weblocators.Lastname).type(LName)
 }
 clickdob(){
-    cy.get(this.weblocators.Dob).click()
+    cy.get(this.weblocators.Dob).click({ force: true });
 }
-clickyear(){
-    cy.get(this.weblocators.year).click()
-}
+// clickyear(){
+//     cy.get(this.weblocators.year).click()
+// }
 
 selectRandomYear() {
     cy.get(this.weblocators.chooseMonthYearBtn).click();
