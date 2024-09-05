@@ -11,7 +11,8 @@ export class registerPage{
     calendarContent: '.mat-calendar-content',
     calendarBody: '.mat-calendar-body',
     overlayBackdrop: '.cdk-overlay-backdrop',
-    email:'label[for="signupStaffDetailForm-email"]'
+    email:'#signupStaffDetailForm-email',
+    conemail:'#signupStaffDetailForm-confirmEmail'
   }
     openURL(){
         cy.visit(Cypress.env('URL'))
@@ -61,7 +62,10 @@ selectRandomDay() {
         });
     });
 } 
-selectemail(Email){
+enteremail(Email){
     cy.get(this.weblocators.email).type(Email)
+}
+enterconemail(Email){
+    cy.get(this.weblocators.conemail).type(Email)
 }
 }
