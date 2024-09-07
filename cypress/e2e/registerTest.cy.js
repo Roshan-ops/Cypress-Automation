@@ -17,9 +17,11 @@ describe('Kiibank Automation', () => {
             registerObj.selectRandomDay();
             registerObj.enteremail(staff.Email);
             registerObj.enterconemail(staff.Email);
-            registerObj.choosecountry(staff.country);
+            registerObj.choosecountryFirstPage(staff.country);
             registerObj.entermobile(staff.Mobile);
             registerObj.selectRandomGender();
+            registerObj.clikcbutton();
+            registerObj.choosecountrySecondPage(staff.country);
 
         });
     });

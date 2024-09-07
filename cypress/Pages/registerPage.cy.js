@@ -18,7 +18,10 @@ export class registerPage{
     mobile:'#signupStaffDetailForm-mobileNo',
     gender:'#signupStaffDetailForm-gender',
     genderOptions: '#signupStaffDetailForm-gender-panel',
-    othergender:'#signupStaffDetailForm-otherGender'
+    othergender:'#signupStaffDetailForm-otherGender',
+    next:'#signupStaffDetailForm-Next',
+    countries:'input[placeholder="Select Country"]',
+    countrysecondOption:'#mat-autocomplete-1'
   }
     openURL(){
         cy.visit(Cypress.env('URL'))
@@ -74,8 +77,8 @@ enteremail(Email){
 enterconemail(Email){
     cy.get(this.weblocators.conemail).type(Email)
 }
-choosecountry(Country){
-    cy.get(this.weblocators.choosecountry).type(Country)
+choosecountryFirstPage(Country){
+    cy.get(this.weblocators.choosecountry).eq(0).type(Country)
     cy.get(this.weblocators.countryOption).contains(Country).click();
 
 }
@@ -93,4 +96,23 @@ selectRandomGender(){
           .type('Non-binary');
     }
 }
+clikcbutton(){
+cy.get(this.weblocators.next).click({ force: true })
+}
+
+choosecountrySecondPage(countries){
+        cy.get(this.weblocators.countries).first().type(countries, { force: true });;
+        cy.wait(2000);
+        cy.get(this.weblocators.countrysecondOption).contains(countries).scrollIntoView() .should('be.visible').click({ force: true });
+    }
+
+// choosecountrySecondPage(){
+//     cy.get(this.weblocators.countries).click({ multiple: true, force: true });
+//     cy.wait(2000);
+// }
+
+// choosecountryoption(county){
+//     cy.get(this.weblocators.countrysecondOption).type(county)
+//     cy.wait(2000);
+// }
 }
