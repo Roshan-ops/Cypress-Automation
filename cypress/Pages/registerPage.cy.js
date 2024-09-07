@@ -12,7 +12,13 @@ export class registerPage{
     calendarBody: '.mat-calendar-body',
     overlayBackdrop: '.cdk-overlay-backdrop',
     email:'#signupStaffDetailForm-email',
-    conemail:'#signupStaffDetailForm-confirmEmail'
+    conemail:'#signupStaffDetailForm-confirmEmail',
+    choosecountry: 'input[placeholder="Select Country of Birth"]',
+    countryOption: '#mat-autocomplete-0',
+    mobile:'#signupStaffDetailForm-mobileNo',
+    gender:'#signupStaffDetailForm-gender',
+    genderOptions: '#signupStaffDetailForm-gender-panel',
+    othergender:'#signupStaffDetailForm-otherGender'
   }
     openURL(){
         cy.visit(Cypress.env('URL'))
@@ -67,5 +73,24 @@ enteremail(Email){
 }
 enterconemail(Email){
     cy.get(this.weblocators.conemail).type(Email)
+}
+choosecountry(Country){
+    cy.get(this.weblocators.choosecountry).type(Country)
+    cy.get(this.weblocators.countryOption).contains(Country).click();
+
+}
+entermobile(Mobile){
+    cy.get(this.weblocators.mobile).type(Mobile)
+}
+selectRandomGender(){
+    cy.get(this.weblocators.gender).click()
+    const genders = ['Male', 'Female', 'Other'];
+    const randomGender = genders[Cypress._.random(0, genders.length - 1)];
+    cy.get(this.weblocators.genderOptions).contains(randomGender).click();
+    if (randomGender === 'Other') {
+        cy.get(this.weblocators.othergender)
+          .should('be.visible')
+          .type('Non-binary');
+    }
 }
 }
