@@ -26,7 +26,11 @@ export class registerPage{
     provinceOption:'#mat-autocomplete-3',
     city:'input[placeholder="Select City"]',
     cityoption:'#mat-autocomplete-4',
-    Address1:'#addressDetail-addressLine2'
+    Address1:'#addressDetail-addressLine1',
+    PostCode:"#addressDetail-zipCode",
+    Living:'label[for="addressDetail-addressYear"]',
+    howLongDropdown:"#addressDetail-addressYear-panel",
+    Continue:'button[type="submit"]'
   }
     openURL(){
         cy.visit(Cypress.env('URL'))
@@ -129,7 +133,7 @@ choosecountrySecondPage(countries){
        
         cy.get(this.weblocators.city).first().type(city ,{ force: true });
 
-        cy.get(this.weblocators.cityoption,{ timeout: 10000 }).contains(city).scrollIntoView().click({ force: true }).then(($el)=>{
+        cy.get(this.weblocators.cityoption,{ timeout: 15000 }).invoke('show').should('be.visible').contains(city).scrollIntoView().click({ force: true }).then(($el)=>{
             if ($el.length===0){
                 cy.wait(1000);
                 cy.get(this.weblocators.cityoption).contains(city).click({ force: true });
@@ -142,4 +146,22 @@ choosecountrySecondPage(countries){
 
     }
 
+    enterpostal(postCode){
+        cy.get(this.weblocators.PostCode).type(postCode);
+
+    }
+    
+    selectDuration(duration) {
+        cy.get(this.weblocators.Living).click( { force: true });
+        const validDurations = ['3 Years', 'More than 3 years'];
+        const randomDuration = validDurations[Cypress._.random(0, validDurations.length - 1)];
+
+        cy.get(this.weblocators.howLongDropdown).contains(randomDuration , { timeout: 10000 }).should('be.visible').click({ force: true });
+
+        // Optionally, assert that the correct option was selected
+        cy.get(this.weblocators.howLongDropdown).should('contain', randomDuration);
+    }
+    clikccontinue(){
+        cy.get(this.weblocators.Continue).should('be.visible').click({ force: true, multiple: true });
+        }
 }

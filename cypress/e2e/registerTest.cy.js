@@ -25,7 +25,9 @@ describe('Kiibank Automation', () => {
             registerObj.chooseprovinceSecondPage(staff.Province);
             registerObj.choosecitySecondPage(staff.City);
             registerObj.enteradress(staff.Address_Line1);
-
+            registerObj.enterpostal(staff.postCode);
+            registerObj.selectDuration();
+            registerObj.clikccontinue();
         });
     });
 });
