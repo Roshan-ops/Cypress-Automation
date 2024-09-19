@@ -13,7 +13,10 @@
     "code":"456735",
     "Address":"Gauradaha Bazar",
     "Address2":"Damak Beldagi road",
-    "postCode":"456735"
-
+    "postCode":"456735",
+    "howLongAtCurrentAddress": "3 Years",
+    "KinFirst": "Ramu",
+    "KinLast": "Kumar"
+    
 
    }

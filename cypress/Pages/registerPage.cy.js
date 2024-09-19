@@ -30,7 +30,19 @@ export class registerPage{
     PostCode:"#addressDetail-zipCode",
     Living:'label[for="addressDetail-addressYear"]',
     howLongDropdown:"#addressDetail-addressYear-panel",
-    Continue:'button[type="submit"]'
+    Continue:'button[type="submit"]',
+    Kinfirstname:"#staffNextOfKinForm-firstName",
+    Kinlastname:"#staffNextOfKinForm-lastName",
+    Kincountry:"#mat-input-34",
+    kincondropdown:"#mat-autocomplete-2",
+    Kinprovince:"#mat-input-44",
+    kinprovdropdown:"#mat-autocomplete-7",
+    kincity: "#mat-input-46",
+    kincitydropdown:"#mat-autocomplete-8",
+    kinaddress:'label[for="staffNextOfKinForm-addressLine1"]',
+    kinmobile:'#staffNextOfKinForm-phoneNumber',
+    kinrelation:'#staffNextOfKinForm-relationshipToKIN',
+    kinemail:'#staffNextOfKinForm-email'
   }
     openURL(){
         cy.visit(Cypress.env('URL'))
@@ -164,4 +176,14 @@ choosecountrySecondPage(countries){
     clikccontinue(){
         cy.get(this.weblocators.Continue).should('be.visible').click({ force: true, multiple: true });
         }
+
+    entername(Name){
+            cy.get(this.weblocators.Kinfirstname).type(Name)
+        }
+
+        enterlast(Last){
+            cy.get(this.weblocators.Kinlastname).type(Last)
+        }
+        
+
 }

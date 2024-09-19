@@ -28,6 +28,8 @@ describe('Kiibank Automation', () => {
             registerObj.enterpostal(staff.postCode);
             registerObj.selectDuration();
             registerObj.clikccontinue();
+            registerObj.entername(staff.KinFirst);
+            registerObj.enterlast(staff.KinLast);
         });
     });
 });
