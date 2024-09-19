@@ -21,7 +21,12 @@ export class registerPage{
     othergender:'#signupStaffDetailForm-otherGender',
     next:'#signupStaffDetailForm-Next',
     countries:'input[placeholder="Select Country"]',
-    countrysecondOption:'#mat-autocomplete-1'
+    countrysecondOption:'#mat-autocomplete-1',
+    province:'input[placeholder="Select Province/State/Region"]',
+    provinceOption:'#mat-autocomplete-3',
+    city:'input[placeholder="Select City"]',
+    cityoption:'#mat-autocomplete-4',
+    Address1:'#addressDetail-addressLine2'
   }
     openURL(){
         cy.visit(Cypress.env('URL'))
@@ -101,18 +106,40 @@ cy.get(this.weblocators.next).click({ force: true })
 }
 
 choosecountrySecondPage(countries){
-        cy.get(this.weblocators.countries).first().type(countries, { force: true });;
+        cy.get(this.weblocators.countries).first().type(countries, { force: true });
         cy.wait(2000);
         cy.get(this.weblocators.countrysecondOption).contains(countries).scrollIntoView() .should('be.visible').click({ force: true });
     }
 
-// choosecountrySecondPage(){
-//     cy.get(this.weblocators.countries).click({ multiple: true, force: true });
-//     cy.wait(2000);
-// }
+    chooseprovinceSecondPage(province){
+        cy.wait(2000);
 
-// choosecountryoption(county){
-//     cy.get(this.weblocators.countrysecondOption).type(county)
-//     cy.wait(2000);
-// }
+
+        // if (province) {
+        //     cy.wait(2000);
+        //     cy.get(this.weblocators.province).first().type(province, { force: true });
+        //     cy.get(this.weblocators.provinceOption).contains(province).click();
+        // } else {
+        //     throw new Error("Province value is undefined. Please provide a valid province.");
+        // }
+        cy.get(this.weblocators.province).first().type(province ,{ force: true });
+        cy.get(this.weblocators.provinceOption).contains(province).scrollIntoView().click();
+    }
+    choosecitySecondPage(city){
+       
+        cy.get(this.weblocators.city).first().type(city ,{ force: true });
+
+        cy.get(this.weblocators.cityoption,{ timeout: 10000 }).contains(city).scrollIntoView().click({ force: true }).then(($el)=>{
+            if ($el.length===0){
+                cy.wait(1000);
+                cy.get(this.weblocators.cityoption).contains(city).click({ force: true });
+
+            }
+        }) ;
+    }
+    enteradress(address){
+        cy.get(this.weblocators.Address1).type(address);
+
+    }
+
 }

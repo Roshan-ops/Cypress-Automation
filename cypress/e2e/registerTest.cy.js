@@ -22,6 +22,9 @@ describe('Kiibank Automation', () => {
             registerObj.selectRandomGender();
             registerObj.clikcbutton();
             registerObj.choosecountrySecondPage(staff.country);
+            registerObj.chooseprovinceSecondPage(staff.Province);
+            registerObj.choosecitySecondPage(staff.City);
+            registerObj.enteradress(staff.Address_Line1);
 
         });
     });
